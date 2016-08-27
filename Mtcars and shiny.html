@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mtcars and shiny</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Mtcars and shiny">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Mtcars and shiny</h1>
+    <h2></h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">library(shiny)
+</code></pre>
+
+<pre><code>## Warning: package &#39;shiny&#39; was built under R version 3.2.5
+</code></pre>
+
+<pre><code class="r">library(ggplot2)
+library(plotly)
+</code></pre>
+
+<pre><code>## Warning: package &#39;plotly&#39; was built under R version 3.2.5
+</code></pre>
+
+<pre><code>## 
+## Attaching package: &#39;plotly&#39;
+</code></pre>
+
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     last_plot
+</code></pre>
+
+<pre><code>## The following object is masked from &#39;package:graphics&#39;:
+## 
+##     layout
+</code></pre>
+
+<p>##1. Introduction
+This is a shiny presentation using &quot;mtcars database. There are three tab panels: the first one creates a histogram from a chosen variable; the second one combines two variables producing a two dimension graphic; the third one provides a statistical summary.</p>
+
+<p>##2. Shiny App
+###2.1 Histograms
+To create an histogram I&#39;ve used ggplot and plotly. The user can choose any variable from database. Let&#39;s see an example with the plotly library</p>
+
+<pre><code class="r">a&lt;-qplot(mpg, data=mtcars)
+a
+</code></pre>
+
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-2"></p>
+
+<p>###2.2 Two variable scatterplot
+In this tab panel the user can choose two variables from mtcars dataset. Automatically, there is a scatterplot of these two variables.</p>
+
+<pre><code class="r">plot(mtcars$mpg, mtcars$disp)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-3"></p>
+
+<p>###2.2 Statistical summary
+In this tab panel the user can select from a checkbox the variables he/she wants to incorporate to the summary.</p>
+
+<pre><code class="r">summary(mtcars$mpg)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   10.40   15.42   19.20   20.09   22.80   33.90
+</code></pre>
+
+<p>##3 Conclusion
+The advantage of shiny application is its interactivity, and the user easily can choose different graphics and variables.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

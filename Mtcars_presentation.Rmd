@@ -1,0 +1,48 @@
+---
+title: "mtcars_presentation"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r}
+library(shiny)
+library(ggplot2)
+library(plotly)
+```
+
+
+##1. Introduction
+This is a shiny presentation using "mtcars database. There are three tab panels: the first one creates a histogram from a chosen variable; the second one combines two variables producing a two dimension graphic; the third one provides a statistical summary.
+
+##2. Shiny App
+###2.1 Histograms
+To create an histogram I've used ggplot and plotly. The user can choose any variable from database. Let's see an example with the plotly library
+
+```{r}
+a<-qplot(mpg, data=mtcars)
+a
+
+```
+
+###2.2 Two variable scatterplot
+In this tab panel the user can choose two variables from mtcars dataset. Automatically, there is a scatterplot of these two variables.
+
+```{r}
+plot(mtcars$mpg, mtcars$disp)
+```
+
+
+###2.2 Statistical summary
+In this tab panel the user can select from a checkbox the variables he/she wants to incorporate to the summary.
+
+```{r}
+summary(mtcars$mpg)
+```
+
+
+##3 Conclusion
+The advantage of shiny application is its interactivity, and the user easily can choose different graphics and variables.
